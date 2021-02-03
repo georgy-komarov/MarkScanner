@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MarkScanner</string>
+    <string name="scanHistory">История сканирований</string>
+    <string name="exit">Выход</string>
+    <string name="result">Результат сканирования</string>
+    <string name="fullResult">Ответ ЧЗ (JSON)</string>
+    <string name="updateResult">Обновить статус</string>
+    <string name="scan">Сканировать</string>
+    <string name="checkInputCode">Проверить введённый код</string>
+</resources>
