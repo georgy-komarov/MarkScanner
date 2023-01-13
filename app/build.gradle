@@ -82,6 +82,9 @@ dependencies {
     // Barcode
     implementation "com.google.mlkit:barcode-scanning:16.1.1"
 
+    // Material 3
+    implementation 'com.google.android.material:material:1.6.0'
+
     implementation 'com.yuyh.json:jsonviewer:1.0.6'
 }
 

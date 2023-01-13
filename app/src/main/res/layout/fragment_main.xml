@@ -23,13 +23,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="КИ/КМ"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnCheck"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/checkInputCode" />
+        android:text="@string/checkInputCode"
+        android:textColor="@color/text_secondary" />
 
 
     <TextView
@@ -40,8 +43,10 @@
 
     <Button
         android:id="@+id/btnScan"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/scan" />
+        android:text="@string/scan"
+        android:textColor="@color/text_secondary" />
 
 </LinearLayout>

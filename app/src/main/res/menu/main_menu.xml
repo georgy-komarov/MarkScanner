@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/menuScanHistory"
-        android:icon="@android:drawable/ic_menu_recent_history"
+        android:icon="@drawable/ic_history"
         android:title="@string/scanHistory"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menuExit"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/ic_close"
         android:title="@string/exit"
         app:showAsAction="ifRoom" />
 </menu>
