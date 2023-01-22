@@ -8,8 +8,8 @@
         android:title="@string/scanHistory"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menuExit"
-        android:icon="@drawable/ic_close"
-        android:title="@string/exit"
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"
         app:showAsAction="ifRoom" />
 </menu>

@@ -4,22 +4,12 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import ml.komarov.markscanner.App
 import ml.komarov.markscanner.BarcodeActivity
 import ml.komarov.markscanner.R
-import ml.komarov.markscanner.db.AppDatabase
-import ml.komarov.markscanner.db.History
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
-import java.io.IOException
 
 
 class MainFragment : Fragment() {
@@ -40,6 +30,7 @@ class MainFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
+    @androidx.camera.core.ExperimentalGetImage
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,7 +39,7 @@ class MainFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        activity!!.title = getString(R.string.app_name)
+        requireActivity().title = getString(R.string.app_name)
 
         view.btnScan.setOnClickListener {
             startActivityForResult(
@@ -69,16 +60,18 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(activity, item.title, Toast.LENGTH_SHORT).show()
-
         when (item.itemId) {
-            R.id.menuScanHistory -> fragmentManager!!.beginTransaction()
+            R.id.menuScanHistory -> requireFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, HistoryFragment.newInstance())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(HistoryFragment::class.qualifiedName)
                 .commit()
 
-            R.id.menuExit -> activity!!.finishAndRemoveTask()
+            R.id.menuSettings -> requireFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, SettingsFragment.newInstance())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(SettingsFragment::class.qualifiedName)
+                .commit()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -98,7 +91,7 @@ class MainFragment : Fragment() {
         val newResultFragment = ResultFragment.newInstance()
         newResultFragment.arguments = args
 
-        activity!!.supportFragmentManager.beginTransaction()
+        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, newResultFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .addToBackStack(ResultFragment::class.qualifiedName)

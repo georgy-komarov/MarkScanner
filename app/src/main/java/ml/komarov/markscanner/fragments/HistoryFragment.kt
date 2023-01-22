@@ -33,7 +33,7 @@ class HistoryFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_history, container, false)
 
-        activity!!.title = getString(R.string.scanHistory)
+        requireActivity().title = getString(R.string.scanHistory)
 
         val db: AppDatabase = App.instance!!.getDatabase()!!
         val historyDao = db.historyDao()!!
@@ -52,7 +52,7 @@ class HistoryFragment : Fragment() {
         val newResultFragment = ResultFragment.newInstance()
         newResultFragment.arguments = args
 
-        activity!!.supportFragmentManager.beginTransaction()
+        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, newResultFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .addToBackStack(ResultFragment::class.qualifiedName)
